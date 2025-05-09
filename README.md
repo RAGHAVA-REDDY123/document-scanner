@@ -2,16 +2,26 @@
 This project implements a simple Document Scanner using basic computer vision techniques with OpenCV. The scanner can detect a document in an image, straighten it, and produce a clear, top-down "scanned" version of the document. This mimics the functionality of popular mobile scanning apps. The project is ideal for learning key image processing techniques such as edge detection, contour finding, perspective transformation, and warping.
 the document-scanner pipeline consists of following steps
 
-1.CONVERT THE IMAGE FROM BGR TO RGB FORMAT
+1.CONVERT THE IMAGE FROM BGR TO RGB FORMAT 
+<br>
 2.CONVERT THE RGB IMAGE INTO GRAY SCALE IMAGE
+<br>
 3.APPLY GUASSIAN BLUR
+<br>
 4.APPLY CANNY EDGE DETECTION
+<br>
 5.APPLY DILATION
+<br>
 6.FIND ALL THE CONTOURS IN THE IMAGE
+<br>
 7.FIND THE BIGGEST CONTOUR
+<br>
 8.REORDER THE DETECTED POINTS 
+<br>
 9.WARP THE IMAGE
+<br>
 10.FINALLY PRINT THE SCANNED IMAGE
+<br>
 
 
 🧭 Document Scanner Pipeline – Step-by-Step Description
