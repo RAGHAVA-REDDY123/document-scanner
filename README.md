@@ -58,12 +58,6 @@ contours, hierarchy = cv2.findContours(img_dilated, cv2.RETR_EXTERNAL, cv2.CHAIN
 
 7. Find the Biggest Contour
 Among all detected contours, the one that represents the document is generally the largest quadrilateral. We find this by checking the contour with the biggest area and 4 corner points.
-
-# pseudo-code
-for cnt in contours:
-    area = cv2.contourArea(cnt)
-    if area > threshold and is_quadrilateral(cnt):
-        biggest = cnt
         
 8. Reorder the Detected Points
 To warp the image properly, we need the four corner points of the document in a consistent order: top-left, top-right, bottom-left, bottom-right. This step arranges the corner points accordingly.
@@ -81,4 +75,5 @@ img_warped = cv2.warpPerspective(img, matrix, (width, height))
 The final result is displayed or saved. This image is a clean, cropped, and corrected version of the original image that focuses solely on the document.
 
 cv2.imshow("Scanned Document", img_warped)
+<br>
 cv2.imwrite("scanned_output.jpg", img_warped)
