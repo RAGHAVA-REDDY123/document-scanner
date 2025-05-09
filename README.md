@@ -37,12 +37,14 @@ OpenCV reads images in BGR format by default. To work with libraries or visualiz
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 <br>
+<br>
 2. Convert the RGB Image into Grayscale
 <br>
 <br>
 Grayscale images are easier and faster to process, especially for tasks like edge detection. This step removes color information, retaining only intensity.
 <br>
 img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
+<br>
 <br>
 3. Apply Gaussian Blur
 <br>
@@ -59,6 +61,7 @@ Canny is a multi-stage edge detection algorithm that helps detect edges in the i
 <br>
 img_canny = cv2.Canny(img_blur, 100, 200)
 <br>
+<br>
 5. Apply Dilation
 <br>
 <br>
@@ -68,6 +71,7 @@ kernel = np.ones((5, 5))
 <br>
 img_dilated = cv2.dilate(img_canny, kernel, iterations=2)
 <br>
+<br>
 6. Find All the Contours in the Image
 <br>
 <br>
@@ -75,20 +79,24 @@ Contours are simply the curves joining continuous points along a boundary. In th
 <br>
 contours, hierarchy = cv2.findContours(img_dilated, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 <br>
+<br>
 7. Find the Biggest Contour
 <br>
 <br>
 Among all detected contours, the one that represents the document is generally the largest quadrilateral. We find this by checking the contour with the biggest area and 4 corner points.
+<br>
 <br>
 9. Reorder the Detected Points
 <br>
 <br>
 To warp the image properly, we need the four corner points of the document in a consistent order: top-left, top-right, bottom-left, bottom-right. This step arranges the corner points accordingly.
 <br>
+<br>
 10.reorder function helps align points correctly before warping
 <br>
 <br>
 ordered_points = reorder(biggest)
+<br>
 <br>
 11. Warp the Image
 <br>
@@ -99,7 +107,7 @@ matrix = cv2.getPerspectiveTransform(ordered_points, desired_points)
 <br>
 img_warped = cv2.warpPerspective(img, matrix, (width, height))
 <br>
-
+<br444444444
 12. Finally Print the Scanned Image
 <br>
 <br>
